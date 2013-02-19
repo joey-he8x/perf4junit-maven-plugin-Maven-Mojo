@@ -36,14 +36,15 @@ import org.apache.maven.plugins.annotations.ResolutionScope;
 public class UploadReportMojo
         extends AbstractMojo {
 
-    @Parameter(property = "dimension.endPoint", defaultValue="http://192.168.99.62:3000/perf4junit/upload")
+    @Parameter(property = "dtmp.upload_end_point", defaultValue="http://dtmp.yihaodian.com.cn/perf4junit/upload")
     private String endPoint;
 
+    @Override
     public void execute()
             throws MojoExecutionException {
         File file = new File("target/perf4junit/report.xml");
-        FileInputStream fis = null;
-        BufferedInputStream bis = null;
+        FileInputStream fis;
+        BufferedInputStream bis;
         try {
             fis = new FileInputStream(file);
             bis = new BufferedInputStream(fis);
